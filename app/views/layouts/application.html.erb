@@ -11,10 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class=" bg-indigo-900 h-screen">
+  <body class=" bg-white text-orange-600 ">
     <%= render '/shared/header' %>
     <%# flashes %>
-    <div class="mx-20 mt-8">
+    <div class="mx-20">
 
       <%# devise success %>
       <% if flash[:notice] %>  
@@ -36,8 +36,11 @@
       <%= render '/shared/flash_success' %>
       <%= render '/shared/flash_error' %>
     </div>
-    <main class="mx-20">
+    <main class=" min-h-96">
       <%= yield %>
     </main>
+    <div class=" mb-auto">
+      <%= render '/shared/footer' %>
+    </div>
   </body>
 </html>

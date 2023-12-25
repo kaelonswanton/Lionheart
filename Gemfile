@@ -7,6 +7,7 @@ gem "faker"
 gem "heroicon"
 gem "importmap-rails"
 gem "jbuilder"
+gem "mini_magick", "~> 4.12"
 gem 'pagy'
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.8"
