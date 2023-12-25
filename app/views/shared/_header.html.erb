@@ -1,0 +1,53 @@
+<div class="bg-gray-800">
+  <div class="mx-20 p-4 flex justify-between items-center">
+    <%# icon %>
+    <div class="">
+      <%= link_to image_tag('logo.svg', size: "50x50"), root_path %>
+    </div>
+    
+    <div class="flex">
+      <%# search %>
+      <div class="">
+        <%= search_form_for @q, url: products_path, html: { method: :get } do |f| %>
+          <%= f.search_field :name_cont, placeholder: "Search...", class: "w-96" %>
+          <%= f.submit "Search", class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="">
+    <%# three buttons %>
+      <div class="flex">
+
+        <%# login %>
+        <div class="flex flex-col items-center mr-8">
+          <p>
+            <%= link_to new_user_session_path do %>
+              <%= heroicon 'user', options: { class: 'h-6 w-6' }%>
+              <p>Log in</p>
+            <% end %>
+          </p>
+        </div>
+
+        <%# wishlist %>
+        <div class="flex flex-col items-center mr-8">
+          <p>
+            <%= link_to '#' do %>
+              <%= heroicon 'heart', options: { class: 'h-6 w-6' } %>
+              <p>Wishlist</p>
+            <% end %>
+          </p>
+        </div>
+
+        <%# cart %>
+        <div class="flex flex-col items-center">
+          <p>
+            <%= link_to '#' do %>
+              <%= heroicon 'shopping-cart', options: { class: 'h-6 w-6' } %>
+              <p>Cart</p>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
