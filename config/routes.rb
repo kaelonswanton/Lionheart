@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   get 'contact', to: 'home#contact'
 
   root "categories#index"
+  namespace :admin do
+    resources :categories
+    resources :products
+  end
 end
+ 

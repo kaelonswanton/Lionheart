@@ -17,17 +17,38 @@
     <div class="">
     <%# three buttons %>
       <div class="flex">
-
         <%# login %>
-        <div class="flex flex-col items-center mr-8">
-          <p>
-            <%= link_to new_user_session_path do %>
-              <%= heroicon 'user', options: { class: 'h-6 w-6' }%>
-              <p>Log in</p>
-            <% end %>
-          </p>
-        </div>
-
+        <% if !current_user %>
+          <div class="flex flex-col items-center mr-8">
+              <p>
+                <%= link_to new_user_session_path do %>
+                  <%= heroicon 'user', options: { class: 'h-6 w-6' }%>
+                  <p>Log in</p>
+                <% end %>
+              </p>
+          </div>
+          <div class="flex flex-col items-center mr-8">
+        <% else %>
+         <div class="flex flex-col items-center mr-8">
+            <%# edit %>
+            <p>
+              <%= link_to edit_user_registration_path do %>
+                <%= heroicon 'user', options: { class: 'h-6 w-6' }%>
+                <p>Edit</p>
+              <% end %>
+            </p>
+          </div>
+          <%# logout %>
+          <div class="flex flex-col items-center mr-8 ">
+            <p>
+              <%= button_to destroy_user_session_path, method: :delete do %>
+                <%= heroicon 'user', options: { class: 'h-6 w-6' }%>
+                <p>Log out</p>
+              <% end %>
+            </p>
+          </div>
+        <% end %>
+        
         <%# cart %>
         <div class="flex flex-col items-center">
           <p>
