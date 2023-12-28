@@ -27,8 +27,18 @@
                 <% end %>
               </p>
           </div>
-          <div class="flex flex-col items-center mr-8">
         <% else %>
+          <div class="flex flex-col items-center mr-8">
+            <p>
+              <% if current_user.admin? %>
+                <%= link_to admin_base_index_path do %>
+                  <%= heroicon 'shield-check', options: { class: 'h-6 w-6' }%>
+                <p>Admin</p>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        
          <div class="flex flex-col items-center mr-8">
             <%# edit %>
             <p>
@@ -39,24 +49,23 @@
             </p>
           </div>
           <%# logout %>
-          <div class="flex flex-col items-center mr-8 ">
+          <div class=" mr-8 ">
             <p>
-              <%= button_to destroy_user_session_path, method: :delete do %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "flex flex-col items-center" do %>
                 <%= heroicon 'user', options: { class: 'h-6 w-6' }%>
                 <p>Log out</p>
               <% end %>
             </p>
           </div>
+          <%# cart %>
+          <div class="flex flex-col items-center">
+            <p>
+              <%= link_to '#' do %>
+                <%= heroicon 'shopping-cart', options: { class: 'h-6 w-6' } %>
+                <p>Cart</p>
+              <% end %>
+            </p>
         <% end %>
-        
-        <%# cart %>
-        <div class="flex flex-col items-center">
-          <p>
-            <%= link_to '#' do %>
-              <%= heroicon 'shopping-cart', options: { class: 'h-6 w-6' } %>
-              <p>Cart</p>
-            <% end %>
-          </p>
         </div>
       </div>
     </div>

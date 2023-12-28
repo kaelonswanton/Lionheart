@@ -1,0 +1,18 @@
+<div class="flex justify-center">
+  <%= form_with(model: @category, url: admin_category_path(@category), local: true) do |form| %>
+    <h2 class="text-4xl mb-4">Edit category</h2>
+    <div class="mb-4 flex flex-col">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="flex flex-col mb-4">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+    
+    <div class="btn ">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

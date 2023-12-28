@@ -1,0 +1,31 @@
+<div class="relative">
+  <%= image_tag "/shared/images/background_cropped.jpg", class: "w-full mb-8" %>
+  <div class="absolute inset-0 bg-black opacity-70"></div>
+  <h1 class="opacity-90 absolute text-5xl text-orange-600 p-8 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">Admin Page</h1>
+  <h2 class="opacity-90 absolute text-3xl text-orange-600 left-1/2 top-3/4 -translate-x-1/2 link hover:text-orange-500 "> <%= link_to "About us", about_path %> </h2>
+</div>
+
+<div class="">
+  <div class="flex justify-center mb-4 text-4xl">
+    <p> <%= link_to "Create new category", new_admin_category_path, class: "link text-blue-500" %> </p>
+  </div>
+
+  <div class="grid grid-cols-3 justify-items-center text-center mx-40">
+    <% @categories.each do |category| %>
+      <div class="my-4 ">
+        <%= link_to admin_category_path(category) do %>
+          <% if category.image.attached? %>
+            <%= image_tag category.image, size: "300x300", class: "border border-slate-800 rounded-md transform transition-all duration-500 hover:scale-105 mb-2" %>
+          <% else %>
+            <%= image_tag "/shared/images/backup_logo.jpg", size: "300x300" %>
+          <% end %>
+          <div class="flex justify-between">
+          <%= category.name %>
+          <%= link_to 'Edit', edit_admin_category_path(category)  %>
+          <%= button_to 'Delete', admin_category_path(category), method: :delete, data: { turbo_confirm: "Are you sure?" }%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

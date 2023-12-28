@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :products, only: [:index]
-  resources :categories, only: [:show, :index]
   devise_for :users
-
+  root "categories#index"
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
 
-  root "categories#index"
+  resources :categories, only: [:show, :index]
+  resources :products, only: [:index]
+
   namespace :admin do
+    resources :base, only: [:index]
     resources :categories
     resources :products
   end
