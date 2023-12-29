@@ -1,8 +1,14 @@
 <div class="flex justify-center">
-  <%= form_for @product do |f| %>
-    <div class="flex flex-col">
+  <%= form_with(model: @product, url: admin_products_path, local: true) do |f| %>
+    <h2 class="text-4xl mb-4">Create new product</h2>
+    <div class="mb-4 flex flex-col">
       <%= f.label :name %>
       <%= f.text_field :name %>
+    </div>
+
+    <div class="flex flex-col mb-4">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
     </div>
 
     <div class="flex flex-col">
@@ -14,23 +20,10 @@
         </div>
       <% end %>
     </div>
-
-    <%# accepts_nested_attributes_for :categories %>
-    <details class="collapse bg-base-200">
-      <summary class="collapse-title text-xl font-medium">Add new Category</summary>
-      <div class="collapse-content"> 
-        <p>
-          <div class="flex flex-col">
-            <%= f.fields_for :categories, Category.new do |category_fields| %>
-              <%= category_fields.text_field :name %>
-            <% end %>
-          </div>
-        </p>
-      </div>
-    </details>
-
-    <div class="btn mt-4">
+    
+    <div class="btn ">
       <%= f.submit %>
     </div>
   <% end %>
 </div>
+

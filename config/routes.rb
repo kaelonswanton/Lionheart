@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
 
-  resources :categories, only: [:show, :index]
-  resources :products, only: [:index]
+  resources :categories
+  resources :products
+  resources :comments
 
   namespace :admin do
     resources :base, only: [:index]
     resources :categories
     resources :products
+    resources :posts
   end
 end
  

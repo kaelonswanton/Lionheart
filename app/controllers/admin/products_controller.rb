@@ -7,7 +7,7 @@ class Admin::ProductsController < Admin::BaseController
     @product = Product.new(product_params)
     if @product.save
       flash[:message] = "Product created successfully!"
-      redirect_to admin_category_path
+      redirect_to categories_path
     else
       render :new, status: :unprocessable_entity
     end 
@@ -15,6 +15,6 @@ class Admin::ProductsController < Admin::BaseController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image, category_ids: [])
+    params.require(:product).permit(:name, :description, :price, :image, :category_ids => [])
   end
 end

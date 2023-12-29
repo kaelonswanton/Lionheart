@@ -1,5 +1,12 @@
-<h1 class="flex justify-center text-4xl mt-4"><%= @category.name %></h1>
+<h1 class="flex justify-center text-4xl mt-4">
+  <%= @category.name %>
+</h1>
 <% @products.each do |product| %>
-  <h2 class="card-title"> <%= product.name %> </h2>
-  <p> <%= product.description %> </p>
+  <div class="my-4">
+    <%= link_to product_path(product) do %>
+      <%= product.description %>
+      <%= image_tag product.image, size: "200x200", class: "border border-slate-800 rounded-md transform transition-all duration-500 hover:scale-105 mb-2" %>
+      <%= product.name %>
+    <% end %>
+  </div>
 <% end %>

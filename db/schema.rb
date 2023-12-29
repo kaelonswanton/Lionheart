@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_28_192937) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_29_143951) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -55,6 +55,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_192937) do
     t.index ["product_id"], name: "index_category_product_links_on_product_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -82,4 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_28_192937) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "category_product_links", "categories"
   add_foreign_key "category_product_links", "products"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
 end
