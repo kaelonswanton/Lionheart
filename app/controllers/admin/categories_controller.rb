@@ -4,7 +4,8 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def show
-    @products = Category.find(params[:id]).products
+    @category = Category.find_by(id: params[:id])
+    @products = @category.products
   end
 
   def new

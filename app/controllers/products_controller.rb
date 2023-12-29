@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
   def index
-    @products = @q.result(distinct: true)
+    #search
   end
 
   def show
+    #individual product for buying
   end
 end
