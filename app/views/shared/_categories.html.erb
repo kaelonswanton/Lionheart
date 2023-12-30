@@ -1,0 +1,14 @@
+<div class="grid grid-cols-3 justify-items-center text-center mx-40">
+<% @categories.each do |category| %>
+  <div class="my-4 ">
+    <%= link_to category_path(category) do %>
+      <%= image_tag category.image, size: "300x300", class: "border border-slate-800 rounded-md transform transition-all duration-500 hover:scale-105 mb-2" %>
+      <%= category.name %>
+      <% if current_user.admin? %>
+        <%= link_to 'Edit', edit_admin_category_path(category)  %>
+        <%= button_to 'Delete', category_path(category), method: :delete, data: { turbo_confirm: "Are you sure?" }%>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+</div>

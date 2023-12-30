@@ -1,0 +1,10 @@
+<h1 class="flex justify-center"> </h1>
+<div class="flex justify-center">
+  <div class="mx-20 flex flex-col justify-center text-center ">
+      <div>
+        <p><%= @post.created_at.strftime("%B %d, %Y") %> </p>
+        <p class="text-4xl font-bold mb-4"><%= @post.title %></p>
+        <p class="text-xl"><%= @post.body %></p>
+      </div>
+  </div>
+</div>
