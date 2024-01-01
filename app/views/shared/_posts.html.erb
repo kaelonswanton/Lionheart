@@ -1,12 +1,12 @@
 <div class="flex justify-center">
-  <div class="mx-20 flex flex-col justify-center text-center border border-gray-500 w-1/2 p-6 ">
-    <% @posts.each do |post| %>
+  <% @posts.each do |post| %>
+    <div class="mx-20 flex flex-col justify-center text-center border border-gray-500 w-1/2 p-6 ">
       <div>
         <p><%= post.created_at.strftime("%B %d, %Y") %> </p>
         <p class="text-4xl font-bold mb-4"><%= post.title %></p>
         <p class="text-xl"><%= post.body.truncate_words(40) %></p>
         <p class="text-red-700 hover:text-red-600"><%= link_to "Read now", post_path(post) %> </p>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

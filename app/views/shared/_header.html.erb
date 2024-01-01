@@ -30,7 +30,7 @@
         <% else %>
           <div class="flex flex-col items-center mr-8">
             <p>
-              <% if current_user.admin? %>
+              <% if current_user && current_user.admin? %>
                 <%= link_to admin_base_index_path do %>
                   <%= heroicon 'shield-check', options: { class: 'h-6 w-6' }%>
                 <p>Admin</p>
@@ -57,7 +57,8 @@
               <% end %>
             </p>
           </div>
-          <%# cart %>
+        <% end %>
+        <%# cart %>
           <div class="flex flex-col items-center">
             <p>
               <%= link_to '#' do %>
@@ -65,7 +66,6 @@
                 <p>Cart</p>
               <% end %>
             </p>
-        <% end %>
         </div>
       </div>
     </div>

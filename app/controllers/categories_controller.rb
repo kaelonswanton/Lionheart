@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    if current_user.admin?
+    if current_user && current_user.admin?
       @category.destroy
       flash[:message] = "Category deleted successfully"
       redirect_to categories_path

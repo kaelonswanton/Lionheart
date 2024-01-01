@@ -15,6 +15,18 @@ class Admin::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:message] = "Post updated successfully"
+      redirect_to @post
+    else
+      flash[:error] = @post.errors.full_messages.join(", ")
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

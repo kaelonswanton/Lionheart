@@ -2,6 +2,9 @@
 <div class="flex justify-center">
   <div class="mx-20 flex flex-col justify-center text-center ">
       <div>
+        <% if current_user && current_user.admin? %>
+          <%= link_to 'Edit Post', edit_admin_post_path(@post), class: "text-4xl link"%>
+        <% end %>
         <p><%= @post.created_at.strftime("%B %d, %Y") %> </p>
         <p class="text-4xl font-bold mb-4"><%= @post.title %></p>
         <p class="text-xl"><%= @post.body %></p>
