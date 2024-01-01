@@ -1,0 +1,17 @@
+<div class="flex justify-center">
+  <%= form_with(model: [:admin, @category], local: true) do |form| %>
+    <div class="mb-4 flex flex-col">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="flex flex-col mb-4">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+    
+    <div class="btn ">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

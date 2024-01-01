@@ -1,0 +1,19 @@
+<div class="mx-20">
+  <div class="flex justify-around">
+    <%# image %>
+    <div class=" w-1/2 mr-20">
+      <%= image_tag @product.image %>
+    </div>
+
+    <%# contents %>
+    <div class="flex flex-col w-1/2">
+      <p class="text-6xl mb-4"><%= @product.name.upcase %></p>
+      <p class="text-xl mb-4">$<%= @product.price %>
+      <p class="mb-8 btn"><%= link_to "Add to cart", '#' %></p>
+      <p class=""><%= @product.description %></p>
+    </div>
+  
+  
+  
+  </div>
+</div>
