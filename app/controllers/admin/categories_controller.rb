@@ -1,13 +1,4 @@
 class Admin::CategoriesController < Admin::BaseController
-  def index
-    @categories = Category.all
-  end
-
-  def show
-    @category = Category.find_by(id: params[:id])
-    @products = @category.products
-  end
-
   def new
     @category = Category.new
   end
@@ -18,6 +9,7 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:message] = "Category created successfully"
       redirect_to categories_path
     else
+      flash.now[:error] = @category.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,8 +24,16 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:message] = "Category updated successfully"
       redirect_to categories_path
     else
+      flash.now[:error] = @category.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:message] = "Category deleted successfully"
+    redirect_to categories_path
   end
 
   private

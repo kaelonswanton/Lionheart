@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'spec_helper'
 
 RSpec.describe User, type: :model do
   context "validations" do
@@ -10,7 +9,7 @@ RSpec.describe User, type: :model do
   end
 
   context "associations" do
-
+    #it { should have_many(:orders) }
   end
 
   context "admin" do

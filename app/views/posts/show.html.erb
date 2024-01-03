@@ -3,7 +3,8 @@
   <div class="mx-20 flex flex-col justify-center text-center ">
       <div>
         <% if current_user && current_user.admin? %>
-          <%= link_to 'Edit Post', edit_admin_post_path(@post), class: "text-4xl link"%>
+          <p class="mb-4"> <%= link_to 'Edit Post', edit_admin_post_path(@post), class: "text-4xl text-red-500"%></p>
+          <p> <%= button_to "Delete Post", admin_post_path(@post), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-500" %></p>
         <% end %>
         <p><%= @post.created_at.strftime("%B %d, %Y") %> </p>
         <p class="text-4xl font-bold mb-4"><%= @post.title %></p>

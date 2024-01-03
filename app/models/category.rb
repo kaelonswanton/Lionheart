@@ -4,4 +4,5 @@ class Category < ApplicationRecord
   has_many :products, through: :category_product_links
 
   validates :name, presence: true, uniqueness: true
+  validates :image, presence: true
 end

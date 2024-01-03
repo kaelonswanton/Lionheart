@@ -9,8 +9,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'custom-brown': '#6E2B17',
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        'el-messiri': ['El Messiri', 'sans-serif'],
+
       },
     },
   },

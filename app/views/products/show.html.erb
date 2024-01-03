@@ -9,7 +9,7 @@
     <div class="flex flex-col w-1/2">
       <p class="text-6xl mb-4"><%= @product.name.upcase %></p>
       <p class="text-xl mb-4">$<%= @product.price %>
-      <p class="mb-8 btn"><%= link_to "Add to cart", '#' %></p>
+      <p class="mb-8"><%= link_to "Add to cart", '#', class: "btn w-full" %></p>
       <p class=""><%= @product.description %></p>
     </div>
   

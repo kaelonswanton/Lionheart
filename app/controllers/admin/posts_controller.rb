@@ -9,7 +9,7 @@ class Admin::PostsController < ApplicationController
       flash[:message] = "Post created successfully"
       redirect_to root_url
     else
-      flash[:error] = @post.errors.full_messages.join(", ")
+      flash.now[:error] = @post.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -24,9 +24,16 @@ class Admin::PostsController < ApplicationController
       flash[:message] = "Post updated successfully"
       redirect_to @post
     else
-      flash[:error] = @post.errors.full_messages.join(", ")
+      flash.now[:error] = @post.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:message] = "Post deleted successfully"
+    redirect_to root_url
   end
 
   private
